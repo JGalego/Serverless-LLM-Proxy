@@ -1,0 +1,9 @@
+# Plot
+matplotlib
+numpy
+scikit-learn
+
+# Explore
+dash
+plotly
+umap-learn

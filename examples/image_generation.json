@@ -1,0 +1,6 @@
+{
+	"model": "bedrock/stability.stable-diffusion-xl-v1",
+	"prompt": "An astronaut riding a horse on Mars",
+	"size": "1024x1024",
+    "seed": 30
+}

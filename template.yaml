@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: 'AWS::Serverless-2016-10-31'
+Description: >
+  Serverless LiteLLM Proxy 🚅⚡☁️
+  OpenAI-compatible LLM proxy on AWS Lambda and Amazon API Gateway powered by LiteLLM
+
+Globals:
+  Function:
+    MemorySize: 1024
+    Timeout: 29
+
+Resources:
+  LambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: src/
+      Handler: app.handler
+      Runtime: python3.12
+      Policies:
+        # Provides PUT+GET access to S3 and full access to CloudWatch Logs
+        # https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSLambdaExecute.html
+        - AWSLambdaExecute
+        # Provides read only access to Amazon SSM
+        # https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonSSMReadOnlyAccess.html
+        - AmazonSSMReadOnlyAccess
+        # Grants administrative permissions that allow the user permission to
+        # create, read, update, and delete Amazon Bedrock resources
+        # https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonBedrockFullAccess
+        - AmazonBedrockFullAccess
+      Events:
+        Root:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+        NonRoot:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  Api:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
