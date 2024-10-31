@@ -48,7 +48,7 @@ Make sure the following tools are installed and properly configured:
     sam list stack-outputs --stack-name serverless-llm-proxy
     ```
 
-	<img src="assets/sam_deployment.png"/>
+    <img src="assets/sam_deployment.png"/>
 
 ### Option B: Run Locally 🏠
 
@@ -58,11 +58,11 @@ Make sure the following tools are installed and properly configured:
 
     ```bash
     python src/app.py
-	```
+    ```
 
 2. Head over to [localhost:8000/docs](http://localhost:8000/docs) ◝(ᵔᗜᵔ)◜
 
-	![](assets/swagger_docs.png)
+    ![](assets/swagger_docs.png)
 
 ### Managing API Keys 🔑
 

@@ -1,8 +1,8 @@
 {
-	"model": "bedrock/us.anthropic.claude-3-haiku-20240307-v1:0",
-	"messages": [{
-		"role": "user",
-		"content": "What is the answer to the Ultimate Question of Life, the Universe, and Everything? Be succint, but whimsical."
-	}],
-	"temperature": 0
+    "model": "bedrock/us.anthropic.claude-3-haiku-20240307-v1:0",
+    "messages": [{
+        "role": "user",
+        "content": "What is the answer to the Ultimate Question of Life, the Universe, and Everything? Be succint, but whimsical."
+    }],
+    "temperature": 0
 }
